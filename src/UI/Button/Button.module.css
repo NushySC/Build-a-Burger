@@ -16,9 +16,20 @@
 }
 
 .Success {
-    color: #5C9210;
+    background-color: #5C9210;
+    padding: 0.7em;
+    color: white;
+    border-radius: 0.5em;
+    border-style: none;
+    margin: 0.3em;
 }
 
 .Danger {
-    color: #944317;
+    background-color: #944317;
+    padding: 0.7em;
+    color: white;
+    border-radius: 0.5em;
+    border-style: none;
+    margin: 0.3em;
+    
 }

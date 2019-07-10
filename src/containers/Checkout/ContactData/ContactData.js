@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import Button from '../../../UI/Button/Button';
 import Spinner from '../../../UI/Spinner/Spinner';
-import styles from './ContactData.css';
+import styles from './ContactData.module.css';
 import axios from '../../../axios-orders';
 
 class ContactData extends Component {

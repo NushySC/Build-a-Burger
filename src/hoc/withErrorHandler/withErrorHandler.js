@@ -6,7 +6,7 @@ import Auxi from '../Auxi/Auxi';
 const withErrorHandler = ( WrappedComponent, axios ) => {
     return class extends Component {
         state = {
-            error: null
+            error: null,
         }
 
         componentWillMount () {

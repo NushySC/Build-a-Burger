@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
-import {Route} from 'react-router-dom';
+import {Route, Redirect} from 'react-router-dom';
 
 import CheckoutSummary from '../../components/Order/CheckoutSummary/CheckoutSummary';
 import ContactData from './ContactData/ContactData';
 import {connect} from 'react-redux';
+import Auxi from '../../hoc/Auxi/Auxi'
 
 class Checkout extends Component {
 	//Now In Redux
@@ -36,27 +37,29 @@ class Checkout extends Component {
 	};
 
 	render() {
-		return (
-			<div>
-				<CheckoutSummary
-					ingredients={this.props.ings}
-					checkoutCancelled={this.checkoutCancelledHandler}
-					checkoutContinued={this.checkoutContinuedHandler}
-				/>
-				<Route
-					path={this.props.match.path + '/contact-data'}
-					component = {ContactData}
-					//Now in Redux
-					// render={props => (
-					// 	<ContactData
-					// 		ingredients={this.state.ingredients}
-					// 		price={this.props.price}
-					// 		{...props}
-						/>
-					)}
-				/>
-			</div>
-		);
+		let summary = <Redirect to="/" />;
+		if (this.props.ings) {
+			summary(
+				<Auxi>
+					<CheckoutSummary
+						ingredients={this.props.ings}
+						checkoutCancelled={this.checkoutCancelledHandler}
+						checkoutContinued={this.checkoutContinuedHandler}
+					/>
+					<Route
+						path={this.props.match.path + '/contact-data'}
+						component={ContactData}
+						//Now in Redux
+						// render={props => (
+						// 	<ContactData
+						// 		ingredients={this.state.ingredients}
+						// 		price={this.props.price}
+						// 		{...props}
+					/>
+				</Auxi>
+			);
+		}
+		return <div>{summary}</div>;
 	}
 }
 
